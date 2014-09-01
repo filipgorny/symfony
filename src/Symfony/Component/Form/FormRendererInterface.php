@@ -37,13 +37,13 @@ interface FormRendererInterface
     /**
      * Renders a named block of the form theme.
      *
-     * @param FormView $view      The view for which to render the block.
-     * @param string   $blockName The name of the block.
-     * @param array    $variables The variables to pass to the template.
+     * @param FormViewFactoryInterface $viewFactory The view factory instance which returns valid FormView
+     * @param string                   $blockName   The name of the block.
+     * @param array                    $variables   The variables to pass to the template.
      *
      * @return string The HTML markup
      */
-    public function renderBlock(FormView $view, $blockName, array $variables = array());
+    public function renderBlock(FormViewFactoryInterface $viewFactory, $blockName, array $variables = array());
 
     /**
      * Searches and renders a block for a given name suffix.
@@ -55,13 +55,13 @@ interface FormRendererInterface
      * If this method is called recursively, the block search is continued
      * where a block was found before.
      *
-     * @param FormView $view            The view for which to render the block.
-     * @param string   $blockNameSuffix The suffix of the block name.
-     * @param array    $variables       The variables to pass to the template.
+     * @param FormViewFactoryInterface $viewFactory     The view factory instance which returns valid FormView
+     * @param string                   $blockNameSuffix The suffix of the block name.
+     * @param array                    $variables       The variables to pass to the template.
      *
      * @return string The HTML markup
      */
-    public function searchAndRenderBlock(FormView $view, $blockNameSuffix, array $variables = array());
+    public function searchAndRenderBlock(FormViewFactoryInterface $viewFactory, $blockNameSuffix, array $variables = array());
 
     /**
      * Renders a CSRF token.

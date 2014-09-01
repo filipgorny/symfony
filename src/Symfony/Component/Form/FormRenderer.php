@@ -103,8 +103,10 @@ class FormRenderer implements FormRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderBlock(FormView $view, $blockName, array $variables = array())
+    public function renderBlock(FormViewFactoryInterface $viewFactory, $blockName, array $variables = array())
     {
+        $view = $viewFactory->createView();
+
         $resource = $this->engine->getResourceForBlockName($view, $blockName);
 
         if (!$resource) {
@@ -162,8 +164,10 @@ class FormRenderer implements FormRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function searchAndRenderBlock(FormView $view, $blockNameSuffix, array $variables = array())
+    public function searchAndRenderBlock(FormViewFactoryInterface $viewFactory, $blockNameSuffix, array $variables = array())
     {
+        $view = $viewFactory->createView();
+
         $renderOnlyOnce = 'row' === $blockNameSuffix || 'widget' === $blockNameSuffix;
 
         if ($renderOnlyOnce && $view->isRendered()) {

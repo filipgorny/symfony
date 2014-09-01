@@ -16,7 +16,7 @@ use Symfony\Component\Form\Exception\BadMethodCallException;
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class FormView implements \ArrayAccess, \IteratorAggregate, \Countable
+class FormView implements \ArrayAccess, \IteratorAggregate, \Countable, FormViewFactoryInterface
 {
     /**
      * The variables assigned to this view.
@@ -155,5 +155,17 @@ class FormView implements \ArrayAccess, \IteratorAggregate, \Countable
     public function count()
     {
         return count($this->children);
+    }
+
+    /**
+     * Creates a view.
+     *
+     * @param FormView $parent The parent view
+     *
+     * @return FormView The view
+     */
+    public function createView(FormView $parent = null)
+    {
+        return $this;
     }
 }

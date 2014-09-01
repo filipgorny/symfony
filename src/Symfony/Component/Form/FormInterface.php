@@ -16,7 +16,7 @@ namespace Symfony\Component\Form;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-interface FormInterface extends \ArrayAccess, \Traversable, \Countable
+interface FormInterface extends \ArrayAccess, \Traversable, \Countable, FormViewFactoryInterface
 {
     /**
      * Sets the parent form.
@@ -276,13 +276,4 @@ interface FormInterface extends \ArrayAccess, \Traversable, \Countable
      * @return Boolean
      */
     public function isRoot();
-
-    /**
-     * Creates a view.
-     *
-     * @param FormView $parent The parent view
-     *
-     * @return FormView The view
-     */
-    public function createView(FormView $parent = null);
 }
